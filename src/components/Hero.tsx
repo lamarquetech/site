@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ArrowRight, Sparkles, MessageCircle, ShieldCheck, UserCheck, Cpu, Clock } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
-import { HERO_HOLOGRAM_URL } from '../assets/images';
+import { HERO_HOLOGRAM_URL, HERO_AI_BG_URL } from '../assets/images';
 import { ParticlesBackground } from './ParticlesBackground';
 
 interface HeroProps {
@@ -37,6 +37,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDiagnostic }) => {
     <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#05070D]">
       {/* Interactive Cinematic Cyber Particles Canvas */}
       <ParticlesBackground />
+
+      {/* Cinematic AI High-Tech Background Loop Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-25">
+        <motion.img
+          src={HERO_AI_BG_URL}
+          alt="AI Digital Transformation Loop"
+          referrerPolicy="no-referrer"
+          initial={{ scale: 1 }}
+          animate={{ 
+            scale: [1, 1.08, 1],
+            opacity: [0.7, 0.9, 0.7]
+          }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Dark Radial Overlay Gradient Masks for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-[#05070D]/70 to-[#05070D]/90"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#05070D]/60 to-[#05070D]"></div>
+      </div>
 
       {/* Background Glow Orbs & Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
