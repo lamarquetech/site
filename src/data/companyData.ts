@@ -124,14 +124,14 @@ export const SERVICES_DATA: ServiceItem[] = [
 ];
 
 export const PARTNERS_DATA: PartnerCompany[] = [
+  { id: 'refugio-forte', name: 'POUSADA REFÚGIO DO FORTE', tagline: 'Hotelaria & Turismo' },
+  { id: 'engefrance', name: 'ENGEFRANCE ENGENHARIA', tagline: 'Engenharia & Construção' },
+  { id: 'composicao-contabil', name: 'COMPOSIÇÃO CONTÁBIL', tagline: 'Gestão Contábil & Financeira' },
   { id: '1', name: 'INOVATEC SOLUÇÕES', tagline: 'Tecnologia Industrial' },
   { id: '2', name: 'NEXORA', tagline: 'Plataforma SaaS' },
   { id: '3', name: 'ALPHATECH', tagline: 'Soluções Financeiras' },
   { id: '4', name: 'STRATEGY SOLUTIONS', tagline: 'Consultoria Estratégica' },
   { id: '5', name: 'VISIONARY GROUP', tagline: 'Investimentos & Inovação' },
-  { id: '6', name: 'PRIME SYSTEMS', tagline: 'Engenharia de Software' },
-  { id: '7', name: 'METRICS DIGITAL', tagline: 'Performance & Analytics' },
-  { id: '8', name: 'CYBERFLOW', tagline: 'Segurança e Dados' },
 ];
 
 export const PROCESS_STEPS: ProcessStep[] = [
@@ -211,46 +211,46 @@ export const TEAM_MEMBERS: TeamMember[] = [
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    id: 'automacao-comercial',
-    title: 'Automação Comercial',
-    subtitle: 'Otimização de vendas e atendimento para rede de varejo',
-    category: 'Automação & Agente IA',
-    before: 'Processos manuais, atendimento demorado no WhatsApp, atraso na resposta de orçamentos e alta perda de oportunidades fora do horário comercial.',
-    after: 'Atendimento inteligente automatizado com qualificação instantânea de leads, agendamento de reuniões e integração direta ao CRM da equipe.',
+    id: 'pousada-refugio-forte',
+    title: 'Pousada Refúgio do Forte',
+    subtitle: 'Automação de atendimento e reservas inteligentes via WhatsApp',
+    category: 'Agente de IA & Hotelaria',
+    before: 'Consultas sobre disponibilidade demoravam para ser respondidas fora do horário comercial, resultando em perda de reservas para concorrentes.',
+    after: 'Agente de IA integrado que tira dúvidas, consulta disponibilidade, apresenta fotos dos quartos e auxilia no fechamento das reservas 24h por dia.',
     kpis: [
-      { label: 'Produtividade', value: '+320%', trend: 'up' },
-      { label: 'Custos Operacionais', value: '-62%', trend: 'down' },
-      { label: 'Taxa de Conversão', value: '+85%', trend: 'up' }
+      { label: 'Conversão de Reservas', value: '+240%', trend: 'up' },
+      { label: 'Tempo de Resposta', value: 'Imediato', trend: 'down' },
+      { label: 'Atendimento 24/7', value: '100%', trend: 'up' }
     ],
-    description: 'Implementação de agente conversacional de IA com aprendizado sobre o catálogo de produtos e integração aos sistemas de pedidos.'
+    description: 'Implementação de Inteligência Artificial para gestão de atendimento receptivo e conversão automática de hóspedes no segmento hoteleiro.'
   },
   {
-    id: 'portal-do-cliente',
-    title: 'Portal do Cliente',
-    subtitle: 'Sistema web completo para gestão de serviços e pagamentos',
-    category: 'Sistema Web Customizado',
-    before: 'Solicitações de suporte via mensagens informais, falta de visibilidade financeira para os clientes e gargalo de atendimento no suporte.',
-    after: 'Plataforma web segura com autoatendimento 24/7, emissão de faturas automatizada e rastreabilidade total de chamados em tempo real.',
+    id: 'engefrance',
+    title: 'Engefrance Engenharia',
+    subtitle: 'Presença digital de alta performance e automação comercial',
+    category: 'Website & Automação Corporativa',
+    before: 'Apresentação de portfólio institucional defasada e fluxo manual de recebimento de cotações para grandes obras de engenharia.',
+    after: 'Website corporativo moderno com SEO otimizado e formulários inteligentes de orçamento integrados diretamente com a equipe técnica.',
     kpis: [
-      { label: 'Satisfação dos Clientes', value: '+180%', trend: 'up' },
-      { label: 'Tempo de Atendimento', value: '-40%', trend: 'down' },
-      { label: 'Retenção de Clientes', value: '+95%', trend: 'up' }
+      { label: 'Leads Qualificados', value: '+310%', trend: 'up' },
+      { label: 'Velocidade de Carga', value: '< 1.2s', trend: 'up' },
+      { label: 'Aumento de Propostas', value: '+85%', trend: 'up' }
     ],
-    description: 'Desenvolvimento de portal corporativo responsivo com autenticação segura, criptografia de ponta a ponta e relatórios executivos.'
+    description: 'Desenvolvimento de ecossistema digital completo com posicionamento de marca e captura de oportunidades B2B para o setor da construção civil.'
   },
   {
-    id: 'agente-de-ia',
-    title: 'Agente de IA e Qualificação de Leads',
-    subtitle: 'Qualificação em tempo real para empresa SaaS e B2B',
-    category: 'Inteligência Artificial',
-    before: 'Leads demoravam até 24h para serem contatados pelos vendedores. Equipe perdia tempo com contatos fora do perfil ideal de compra.',
-    after: 'Agente de IA qualifica leads em menos de 10 segundos, coleta requisitos e direciona apenas reuniões pré-qualificadas para o time comercial.',
+    id: 'composicao-contabil',
+    title: 'Composição Contábil',
+    subtitle: 'Portal de serviços e automação de solicitações contábeis',
+    category: 'Sistema Web & Agente IA',
+    before: 'Alta demanda repetitiva de clientes solicitando guias, certidões e relatórios contábeis pelo canal de atendimento.',
+    after: 'Agente inteligente que identifica o cliente, automatiza o envio de documentos essenciais e tria solicitações complexas para os contadores.',
     kpis: [
-      { label: 'Leads Qualificados', value: '+250%', trend: 'up' },
-      { label: 'Tempo de Resposta', value: '-70%', trend: 'down' },
-      { label: 'Disponibilidade', value: '24/7', trend: 'up' }
+      { label: 'Redução de Chamados', value: '-65%', trend: 'down' },
+      { label: 'Satisfação do Cliente', value: '99%', trend: 'up' },
+      { label: 'Produtividade da Equipe', value: '+280%', trend: 'up' }
     ],
-    description: 'Agente de IA treinado com a metodologia de vendas do cliente, conectado via API ao ecossistema do cliente.'
+    description: 'Solução sob medida integrando Inteligência Artificial e automação de processos para escritórios de contabilidade.'
   }
 ];
 
