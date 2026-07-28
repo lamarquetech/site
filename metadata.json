@@ -1,0 +1,6 @@
+{
+  "name": "LamarqueTech",
+  "description": "Website corporativo premium da LamarqueTech - Inteligência Artificial, Automação e Desenvolvimento de Sistemas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
