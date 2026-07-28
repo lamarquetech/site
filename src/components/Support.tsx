@@ -1,11 +1,34 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import { SUPPORT_PILLARS } from '../data/companyData';
 import { Activity, Wrench, ShieldCheck, MessageSquare, Server, TrendingUp, Sparkles, CheckCircle2, ShieldAlert } from 'lucide-react';
 
 interface SupportProps {
   onOpenDiagnostic: () => void;
 }
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const pillarVariants: Variants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export const Support: React.FC<SupportProps> = ({ onOpenDiagnostic }) => {
   const getPillarIcon = (iconName: string) => {
@@ -30,28 +53,39 @@ export const Support: React.FC<SupportProps> = ({ onOpenDiagnostic }) => {
           
           {/* Left Column Text & Pillars Grid */}
           <div className="lg:col-span-8">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0B1220] border border-[#4DB8FF]/30 text-[#4DB8FF] text-xs font-semibold uppercase tracking-wider mb-4">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>SUPORTE TÉCNICO ESPECIALIZADO</span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0B1220] border border-[#4DB8FF]/30 text-[#4DB8FF] text-xs font-semibold uppercase tracking-wider mb-4">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>SUPORTE TÉCNICO ESPECIALIZADO</span>
+              </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F7F9FC] tracking-tight mb-4">
-              Sua operação sempre em <span className="text-[#4DB8FF] text-glow">boas mãos.</span>
-            </h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F7F9FC] tracking-tight mb-4">
+                Sua operação sempre em <span className="text-[#4DB8FF] text-glow">boas mãos.</span>
+              </h2>
 
-            <p className="text-base sm:text-lg text-[#C8D2E5] mb-10 max-w-2xl">
-              Monitoramos, protegemos e evoluímos suas soluções para garantir estabilidade, segurança e alta performance 24 horas por dia.
-            </p>
+              <p className="text-base sm:text-lg text-[#C8D2E5] mb-10 max-w-2xl">
+                Monitoramos, protegemos e evoluímos suas soluções para garantir estabilidade, segurança e alta performance 24 horas por dia.
+              </p>
+            </motion.div>
 
-            {/* 6 Pillars Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
-              {SUPPORT_PILLARS.map((pillar, idx) => (
+            {/* 6 Pillars Staggered Grid */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10"
+            >
+              {SUPPORT_PILLARS.map((pillar) => (
                 <motion.div
                   key={pillar.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
+                  variants={pillarVariants}
+                  whileHover={{ y: -4 }}
                   className="glass-card glass-card-hover p-6 rounded-2xl border border-[#4DB8FF]/15 flex items-start gap-4"
                 >
                   <div className="p-3 rounded-xl bg-[#0B1220] border border-[#4DB8FF]/30 shrink-0">
@@ -63,18 +97,28 @@ export const Support: React.FC<SupportProps> = ({ onOpenDiagnostic }) => {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            <button
+            <motion.button
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               onClick={onOpenDiagnostic}
               className="px-8 py-4 text-base font-bold text-white bg-gradient-to-r from-[#1E6DFF] to-[#0052E0] hover:from-[#4DB8FF] hover:to-[#1E6DFF] rounded-xl shadow-xl shadow-[#1E6DFF]/25 hover:shadow-[#4DB8FF]/40 transition-all cursor-pointer"
             >
               Conhecer Planos de Suporte
-            </button>
+            </motion.button>
           </div>
 
           {/* Right Column Visual Graphic Card */}
-          <div className="lg:col-span-4 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 20 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-4 flex justify-center"
+          >
             <div className="relative w-full max-w-sm glass-card p-8 rounded-3xl border border-[#4DB8FF]/30 text-center shadow-[0_0_50px_rgba(30,109,255,0.2)]">
               
               <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#1E6DFF] to-[#4DB8FF] p-0.5 mx-auto mb-6 shadow-xl animate-pulse-slow">
@@ -101,7 +145,7 @@ export const Support: React.FC<SupportProps> = ({ onOpenDiagnostic }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

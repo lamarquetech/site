@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import { Bot, Globe, Target, PenTool, Code, Cpu, Brain, Headphones, ArrowRight, CheckCircle2, Sparkles, X } from 'lucide-react';
 import { SERVICES_DATA } from '../data/companyData';
 import { ServiceItem } from '../types';
@@ -7,6 +7,30 @@ import { ServiceItem } from '../types';
 interface ServicesProps {
   onOpenDiagnostic: () => void;
 }
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export const Services: React.FC<ServicesProps> = ({ onOpenDiagnostic }) => {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
@@ -33,7 +57,13 @@ export const Services: React.FC<ServicesProps> = ({ onOpenDiagnostic }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+        >
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0B1220] border border-[#4DB8FF]/30 text-[#4DB8FF] text-xs font-semibold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5" />
@@ -48,17 +78,21 @@ export const Services: React.FC<ServicesProps> = ({ onOpenDiagnostic }) => {
           <p className="text-base sm:text-lg text-[#C8D2E5] max-w-xl">
             Da estratégia à execução, oferecemos soluções tecnológicas personalizadas para impulsionar sua empresa para o futuro.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 8 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SERVICES_DATA.map((service, index) => (
+        {/* 8 Cards Staggered Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {SERVICES_DATA.map((service) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
+              variants={cardVariants}
+              whileHover={{ y: -6, scale: 1.02 }}
               className="glass-card glass-card-hover p-7 rounded-2xl flex flex-col justify-between border border-[#4DB8FF]/15 group relative overflow-hidden cursor-pointer"
               onClick={() => setSelectedService(service)}
             >
@@ -86,7 +120,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenDiagnostic }) => {
               <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#1E6DFF]/10 rounded-full blur-xl group-hover:bg-[#4DB8FF]/20 transition-all pointer-events-none"></div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Service Detail Modal */}

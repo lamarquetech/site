@@ -1,11 +1,35 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion, useInView, Variants } from 'framer-motion';
 import { Rocket, Users, Headphones, TrendingUp } from 'lucide-react';
 import { STATS_DATA } from '../data/companyData';
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 export const Stats: React.FC = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   const icons = [
     <Rocket className="w-8 h-8 text-[#4DB8FF]" />,
@@ -17,14 +41,18 @@ export const Stats: React.FC = () => {
   return (
     <section ref={ref} className="py-12 bg-[#0B1220]/60 border-y border-[#4DB8FF]/10 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {STATS_DATA.map((stat, index) => (
             <motion.div
               key={stat.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="glass-card glass-card-hover p-6 rounded-2xl flex items-center gap-5 border border-[#4DB8FF]/15 relative overflow-hidden group"
+              variants={cardVariants}
+              whileHover={{ y: -4, scale: 1.02 }}
+              className="glass-card glass-card-hover p-6 rounded-2xl flex items-center gap-5 border border-[#4DB8FF]/15 relative overflow-hidden group cursor-pointer"
             >
               <div className="p-3.5 rounded-xl bg-[#1E6DFF]/10 border border-[#4DB8FF]/20 group-hover:border-[#4DB8FF] group-hover:scale-110 transition-all duration-300">
                 {icons[index]}
@@ -43,7 +71,7 @@ export const Stats: React.FC = () => {
               <div className="absolute top-0 right-0 w-24 h-24 bg-[#1E6DFF]/5 rounded-full blur-2xl pointer-events-none group-hover:bg-[#4DB8FF]/15 transition-all"></div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

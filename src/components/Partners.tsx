@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { PARTNERS_DATA } from '../data/companyData';
 import { ShieldCheck, Award } from 'lucide-react';
 
@@ -8,15 +9,27 @@ export const Partners: React.FC = () => {
 
   return (
     <section className="py-16 bg-[#05070D] border-y border-[#4DB8FF]/10 overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.5 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center"
+      >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0B1220] border border-[#4DB8FF]/20 text-[#4DB8FF] text-xs font-semibold tracking-widest uppercase">
           <Award className="w-3.5 h-3.5 text-[#4DB8FF]" />
           <span>EMPRESAS QUE CONFIAM NA LAMARQUETECH</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Infinite Marquee Slider */}
-      <div className="relative w-full overflow-hidden flex items-center py-4">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="relative w-full overflow-hidden flex items-center py-4"
+      >
         {/* Left & Right gradient masks for smooth fade */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#05070D] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#05070D] to-transparent z-10 pointer-events-none"></div>
@@ -41,7 +54,7 @@ export const Partners: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

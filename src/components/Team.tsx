@@ -1,7 +1,31 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import { TEAM_MEMBERS } from '../data/companyData';
 import { Linkedin, Github, Mail, Globe, Sparkles, Instagram, Award } from 'lucide-react';
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 35, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export const Team: React.FC = () => {
   return (
@@ -9,7 +33,13 @@ export const Team: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0B1220] border border-[#4DB8FF]/30 text-[#4DB8FF] text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span>NOSSA EQUIPE</span>
@@ -22,17 +52,21 @@ export const Team: React.FC = () => {
           <p className="text-base sm:text-lg text-[#C8D2E5]">
             Nossa liderança combina ciência da computação, engenharia de IA e inteligência de mercado para entregar soluções de impacto.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Team Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TEAM_MEMBERS.map((member, index) => (
+        {/* Team Cards Staggered Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
+          {TEAM_MEMBERS.map((member) => (
             <motion.div
               key={member.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              variants={cardVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
               className="glass-card glass-card-hover p-8 rounded-3xl border border-[#4DB8FF]/20 flex flex-col items-center text-center relative group"
             >
               {/* Circular Photo with Glowing Border */}
@@ -134,7 +168,7 @@ export const Team: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

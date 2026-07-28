@@ -1,11 +1,35 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import { CASE_STUDIES } from '../data/companyData';
 import { Sparkles, ArrowRight, TrendingUp, TrendingDown, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 interface CasesProps {
   onOpenDiagnostic: () => void;
 }
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 35, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export const Cases: React.FC<CasesProps> = ({ onOpenDiagnostic }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -25,7 +49,13 @@ export const Cases: React.FC<CasesProps> = ({ onOpenDiagnostic }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+        >
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#05070D] border border-[#4DB8FF]/30 text-[#4DB8FF] text-xs font-semibold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5" />
@@ -54,17 +84,21 @@ export const Cases: React.FC<CasesProps> = ({ onOpenDiagnostic }) => {
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Featured Cases Grid / Carousel Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Featured Cases Staggered Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+        >
           {CASE_STUDIES.map((study, idx) => (
             <motion.div
               key={study.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              variants={cardVariants}
+              whileHover={{ y: -6 }}
               className={`glass-card p-7 rounded-3xl border flex flex-col justify-between transition-all duration-300 relative ${
                 idx === activeIndex
                   ? 'border-[#4DB8FF] shadow-[0_0_40px_rgba(30,109,255,0.25)] bg-[#0B1220]'
@@ -118,7 +152,7 @@ export const Cases: React.FC<CasesProps> = ({ onOpenDiagnostic }) => {
               </button>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
