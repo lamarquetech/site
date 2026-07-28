@@ -1,3 +1,14 @@
+export interface Testimonial {
+  id: string;
+  clientName: string;
+  companyName: string;
+  role: string;
+  avatar?: string;
+  quote: string;
+  rating: number;
+  highlight: string;
+}
+
 export interface ServiceItem {
   id: string;
   title: string;

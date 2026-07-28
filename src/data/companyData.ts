@@ -1,4 +1,4 @@
-import { ServiceItem, TeamMember, CaseStudy, PartnerCompany, ProcessStep, SupportPillar } from '../types';
+import { ServiceItem, TeamMember, CaseStudy, PartnerCompany, ProcessStep, SupportPillar, Testimonial } from '../types';
 import { ALBERTO_LAMARQUE_IMAGE_URL } from '../assets/images';
 
 export const COMPANY_INFO = {
@@ -251,6 +251,45 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Produtividade da Equipe', value: '+280%', trend: 'up' }
     ],
     description: 'Solução sob medida integrando Inteligência Artificial e automação de processos para escritórios de contabilidade.'
+  }
+];
+
+export const TESTIMONIALS_DATA: Testimonial[] = [
+  {
+    id: 'refugio-forte',
+    clientName: 'Direção Executiva',
+    companyName: 'Pousada Refúgio do Forte',
+    role: 'Gestão Hoteleira',
+    highlight: 'Aumento de 240% nas conversões diretas',
+    quote: 'O agente de Inteligência Artificial criado pela LamarqueTech transformou completamente a nossa recepção. Hoje atendemos os hóspedes instantaneamente 24h por dia, tiramos dúvidas sobre os quartos e fechamos reservas sem perder nenhuma oportunidade!',
+    rating: 5
+  },
+  {
+    id: 'engefrance',
+    clientName: 'Engenharia & Novos Negócios',
+    companyName: 'Engefrance Engenharia',
+    role: 'Direção Técnica',
+    highlight: 'Posicionamento digital e novos contratos',
+    quote: 'A LamarqueTech desenvolveu uma plataforma web moderna e otimizada que reflete exatamente a relevância técnica da Engefrance. O fluxo automatizado de cotações para obras triplicou nossas solicitações de orçamento qualificadas.',
+    rating: 5
+  },
+  {
+    id: 'composicao-contabil',
+    clientName: 'Gestão Operacional',
+    companyName: 'Composição Contábil',
+    role: 'Coordenação Contábil',
+    highlight: 'Redução de 65% nos chamados repetitivos',
+    quote: 'A automação com IA permitiu que nossos clientes solicitem certidões e relatórios de forma autônoma e imediata. Reduzimos drasticamente as demandas operacionais repetitivas e nossa equipe focou na consultoria estratégica.',
+    rating: 5
+  },
+  {
+    id: 'inovatec',
+    clientName: 'Gerência de Inovação',
+    companyName: 'Inovatec Soluções',
+    role: 'Direção de Operações',
+    highlight: 'Eficiência operacional extrema',
+    quote: 'Trabalhar com a equipe da LamarqueTech é ter a certeza de que a tecnologia será aplicada com foco total em resultados de negócios. A agilidade na entrega e a qualidade técnica superaram todas as nossas expectativas.',
+    rating: 5
   }
 ];
 

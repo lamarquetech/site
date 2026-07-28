@@ -7,6 +7,7 @@ import { Partners } from './components/Partners';
 import { Process } from './components/Process';
 import { Team } from './components/Team';
 import { Cases } from './components/Cases';
+import { Testimonials } from './components/Testimonials';
 import { Support } from './components/Support';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
@@ -50,6 +51,9 @@ export default function App() {
 
         {/* 8. Cases de Sucesso */}
         <Cases onOpenDiagnostic={() => setDiagnosticOpen(true)} />
+
+        {/* 8.5 Depoimentos de Clientes */}
+        <Testimonials onOpenDiagnostic={() => setDiagnosticOpen(true)} />
 
         {/* 9. Suporte Técnico */}
         <Support onOpenDiagnostic={() => setDiagnosticOpen(true)} />
