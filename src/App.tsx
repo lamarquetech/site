@@ -11,6 +11,7 @@ import { Support } from './components/Support';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { DiagnosticModal } from './components/DiagnosticModal';
+import { CookieBanner } from './components/CookieBanner';
 import { SEO } from './components/SEO';
 import { SpotlightTracker } from './components/SpotlightTracker';
 import { MessageCircle } from 'lucide-react';
@@ -59,6 +60,9 @@ export default function App() {
 
       {/* 11. Footer */}
       <Footer />
+
+      {/* LGPD Cookie Consent Banner */}
+      <CookieBanner />
 
       {/* Diagnostic Form Modal */}
       <DiagnosticModal
