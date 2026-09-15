@@ -1,0 +1,30 @@
+name: Deploy LamarqueTech Site
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: production-lamarquetech-site
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          port: ${{ secrets.SERVER_PORT }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+
+          script: |
+            /infra/lamarquetech/scripts/deploy-site.sh
