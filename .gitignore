@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Temporary backup files
+*.bak
+*.bkp
+*.bak-*
+*.bkp*

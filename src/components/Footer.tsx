@@ -1,7 +1,14 @@
 import React from 'react';
 import { Logo } from './Logo';
 import { COMPANY_INFO } from '../data/companyData';
-import { Instagram, Youtube, PhoneCall, Mail, Globe, ArrowUp } from 'lucide-react';
+import {
+  Instagram,
+  Youtube,
+  PhoneCall,
+  Mail,
+  Globe,
+  ArrowUp
+} from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -46,16 +53,6 @@ export const Footer: React.FC = () => {
               </a>
 
               <a
-                href={COMPANY_INFO.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-[#0B1220] border border-[#4DB8FF]/20 text-[#C8D2E5] hover:text-[#25D366] hover:border-[#25D366] transition-all"
-                title="WhatsApp (81) 98745-2648"
-              >
-                <PhoneCall className="w-5 h-5" />
-              </a>
-
-              <a
                 href={`mailto:${COMPANY_INFO.email}`}
                 className="p-2.5 rounded-full bg-[#0B1220] border border-[#4DB8FF]/20 text-[#C8D2E5] hover:text-[#4DB8FF] hover:border-[#4DB8FF] transition-all"
                 title="E-mail de Suporte"
@@ -97,31 +94,49 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 4: Contact Info */}
-          <div>
-            <h4 className="text-sm font-bold text-[#F7F9FC] uppercase tracking-wider mb-5 font-mono">
-              Contato
-            </h4>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-center gap-2.5">
-                <PhoneCall className="w-4 h-4 text-[#4DB8FF]" />
-                <span>{COMPANY_INFO.phone}</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#4DB8FF]" />
-                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-[#4DB8FF]">{COMPANY_INFO.email}</a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Globe className="w-4 h-4 text-[#4DB8FF]" />
-                <a href={COMPANY_INFO.websiteUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#4DB8FF]">{COMPANY_INFO.website}</a>
-              </div>
-              <div className="pt-2 text-xs text-[#C8D2E5]/60">
-                {COMPANY_INFO.location}
-              </div>
-            </div>
-          </div>
+{/* Column 4: Contact Info */}
+<div>
+  <h4 className="text-sm font-bold text-[#F7F9FC] uppercase tracking-wider mb-5 font-mono">
+    Contato
+  </h4>
 
-        </div>
+  <div className="space-y-4 text-sm">
+
+    <div className="flex items-center gap-3">
+      <PhoneCall className="w-4 h-4 shrink-0 text-[#4DB8FF]" />
+      <span>{COMPANY_INFO.phone}</span>
+    </div>
+
+    <div className="flex items-center gap-3">
+      <Mail className="w-4 h-4 shrink-0 text-[#4DB8FF]" />
+      <a
+        href={`mailto:${COMPANY_INFO.email}`}
+        className="hover:text-[#4DB8FF] break-all"
+      >
+        {COMPANY_INFO.email}
+      </a>
+    </div>
+
+    <div className="flex items-center gap-3">
+      <Globe className="w-4 h-4 shrink-0 text-[#4DB8FF]" />
+      <a
+        href={COMPANY_INFO.websiteUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-[#4DB8FF] break-all"
+      >
+        {COMPANY_INFO.website}
+      </a>
+    </div>
+
+    <div className="pt-2 text-xs text-[#C8D2E5]/60">
+      {COMPANY_INFO.location}
+    </div>
+
+  </div>
+</div>
+
+</div>
 
         {/* Bottom Bar & Copyright */}
         <div className="pt-8 border-t border-[#4DB8FF]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#C8D2E5]/70">

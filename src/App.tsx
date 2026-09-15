@@ -13,9 +13,9 @@ import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { DiagnosticModal } from './components/DiagnosticModal';
 import { CookieBanner } from './components/CookieBanner';
+import ChatWidget from './components/ChatWidget';
 import { SEO } from './components/SEO';
 import { SpotlightTracker } from './components/SpotlightTracker';
-import { MessageCircle } from 'lucide-react';
 import { COMPANY_INFO } from './data/companyData';
 
 export default function App() {
@@ -67,6 +67,7 @@ export default function App() {
 
       {/* LGPD Cookie Consent Banner */}
       <CookieBanner />
+      <ChatWidget />
 
       {/* Diagnostic Form Modal */}
       <DiagnosticModal
@@ -74,20 +75,6 @@ export default function App() {
         onClose={() => setDiagnosticOpen(false)}
       />
 
-      {/* Floating WhatsApp Quick Contact Button */}
-      <a
-        href={COMPANY_INFO.whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-[#25D366] text-white shadow-[0_0_25px_rgba(37,211,102,0.5)] hover:scale-110 hover:shadow-[0_0_35px_rgba(37,211,102,0.8)] transition-all duration-300 flex items-center justify-center group"
-        aria-label="Atendimento WhatsApp 24/7"
-        title="Falar com Especialista no WhatsApp"
-      >
-        <MessageCircle className="w-7 h-7" />
-        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 group-hover:ml-2 font-bold text-sm">
-          Falar com Especialista
-        </span>
-      </a>
     </div>
   );
 }

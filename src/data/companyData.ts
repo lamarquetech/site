@@ -1,5 +1,18 @@
 import { ServiceItem, TeamMember, CaseStudy, PartnerCompany, ProcessStep, SupportPillar, Testimonial } from '../types';
-import { ALBERTO_LAMARQUE_IMAGE_URL } from '../assets/images';
+
+import {
+  ALBERTO_LAMARQUE_IMAGE_URL,
+  CRISTINA_MEDEIROS_IMAGE_URL
+} from '../assets/images';
+
+
+import {
+  ALBERTO_LAMARQUE_IMAGE_URL,
+  CRISTINA_MEDEIROS_IMAGE_URL
+} from '../assets/images';
+
+import fotoAdriano from '../assets/images/foto_adriano.png';
+
 
 export const COMPANY_INFO = {
   name: 'LamarqueTech',
@@ -14,7 +27,6 @@ export const COMPANY_INFO = {
   instagramUrl: 'https://instagram.com/lamarquetech',
   youtube: '@lamarquetech',
   youtubeUrl: 'https://youtube.com/@lamarquetech',
-  location: 'Recife, PE - Atendimento Global',
 };
 
 export const STATS_DATA = [
@@ -176,36 +188,45 @@ export const PROCESS_STEPS: ProcessStep[] = [
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 'alberto-lamarque',
-    name: 'Alberto Lamarque',
+    name: 'Lamarque',
     role: 'Especialista em Inteligência Artificial',
-    specialties: ['Especialista em Agentes de IA', 'Servidores Linux', 'Automação Inteligente', 'Arquitetura de Sistemas'],
-    bio: 'Pioneiro em arquitetura de IA e servidores de alta performance, Alberto lidera a engenharia de agentes inteligentes e infraestrutura resiliente na LamarqueTech.',
+    specialties: [
+      'Especialista em Agentes de IA',
+      'Servidores Linux',
+      'Automação Inteligente',
+      'Arquitetura de Sistemas'
+    ],
+    bio: 'Pioneiro em arquitetura de IA e servidores de alta performance, Lamarque lidera a engenharia de agentes inteligentes e infraestrutura resiliente na LamarqueTech.',
     image: ALBERTO_LAMARQUE_IMAGE_URL,
-    linkedin: 'https://linkedin.com/in/alberto-lamarque',
-    email: 'alberto@lamarquetech.com.br',
-    website: 'https://www.lamarquetech.com.br'
+    email: 'suporte@lamarquech.com.br',
+    instagram: 'https://instagram.com/lamarquetech',
   },
   {
     id: 'adriano-medeiros',
     name: 'Adriano Medeiros',
-    role: 'Desenvolvedor Senior & Cientista da Computação',
-    specialties: ['Ciência da Computação', 'Full Stack Developer', 'Arquitetura de Software', 'Sistemas Web Customizados'],
+    role: 'Desenvolvedor Sênior',
+    specialties: [
+      'Ciência da Computação',
+      'Full Stack Developer',
+      'Arquitetura de Software',
+      'Sistemas Web Customizados'
+    ],
     bio: 'Cientista da Computação apaixonado por código limpo, sistemas distribuídos e engenharia web de ponta, Adriano transforma requisitos complexos em sistemas fluidos.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600',
-    linkedin: 'https://linkedin.com/in/adriano-medeiros',
-    github: 'https://github.com/adrianomedeiros',
-    email: 'adriano@lamarquetech.com.br'
+    image: fotoAdriano,
   },
   {
     id: 'cristina-medeiros',
     name: 'Cristina Medeiros',
     role: 'Especialista em Marketing Digital & Gestora',
-    specialties: ['Marketing Digital', 'Gestão de Projetos', 'Estratégia Digital', 'Branding & UX'],
+    specialties: [
+      'Marketing Digital',
+      'Gestão de Projetos',
+      'Estratégia Digital',
+      'Branding & UX'
+    ],
     bio: 'Especialista em posicionamento estratégico de marcas e gestão ágil de projetos, Cristina garante que cada solução entregue traga valor de negócio mensurável.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600',
-    linkedin: 'https://linkedin.com/in/cristina-medeiros',
-    instagram: 'https://instagram.com/cristinamedeiros',
-    email: 'cristina@lamarquetech.com.br'
+    image: CRISTINA_MEDEIROS_IMAGE_URL,
+    instagram: 'https://instagram.com/cristmkt'
   }
 ];
 
